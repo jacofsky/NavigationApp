@@ -1,8 +1,9 @@
 import { View, Text } from 'react-native'
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { styles } from '../theme/appTheme'
 import { StackScreenProps } from '@react-navigation/stack'
 import { RootStackParams } from '../navigator/StackNavigator'
+import { AuthContext } from '../contexts/AuthContext'
 
 // interface RouterParams {
 //   id: number,
@@ -19,11 +20,15 @@ const PersonaScreen = ({route, navigation} : Props) => {
   
   console.log(route.params)
 
+  const {singIn} = useContext(AuthContext)
+
   useEffect(() => {
 
     navigation.setOptions({
       title: nombre
     })
+
+    singIn(nombre)
 
   },[])
 

@@ -4,15 +4,26 @@ import { NavigationContainer } from '@react-navigation/native'
 import 'react-native-gesture-handler';
 
 import MenuLateralAvanzado from "./src/navigator/MenuLateralAvanzado";
+import { AuthProvider } from "./src/contexts/AuthContext";
 
 const App = () => {
   
   return (
     <NavigationContainer>
-      <MenuLateralAvanzado />
+      <AppState>
+        <MenuLateralAvanzado />
+      </AppState>
     </NavigationContainer>
   );
 };
+
+const AppState = ({children}: any) => {
+  return (
+    <AuthProvider>
+      {children}
+    </AuthProvider>
+  )
+}
 
 
 
